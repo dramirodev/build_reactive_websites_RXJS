@@ -1,0 +1,42 @@
+<!--
+ ! Excerpted from "Build Reactive Websites with RxJS",
+ ! published by The Pragmatic Bookshelf.
+ ! Copyrights apply to this code. It may not be used to create training material,
+ ! courses, books, articles, and the like. Contact us if you are in doubt.
+ ! We make no guarantees that this code is fit for any purpose.
+ ! Visit http://www.pragmaticprogrammer.com/titles/rkrxjs for more book information.
+-->
+<div *ngIf="photo$ | async as photo">
+  <div class="row">
+    <div class="col-xs-2 col-xs-offset-5">
+      <img class="photo-detail img-rounded" [src]="photo.url">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <div class="input-group">
+        <input [(ngModel)]="tagInput" type="text" class="form-control" 
+          placeholder="Input Tag">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" 
+            (click)="addTag(photo)">Add Tag</button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="photo.tags.length">
+    <div class="col-xs-4 col-xs-offset-4">
+      Tags:
+      <ul>
+        <li *ngFor="let tag of photo.tags">{{ tag }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <button class="btn btn-success" 
+        (click)="photos.savePhoto(photo)">Save</button>
+    </div>
+  </div>
+</div>

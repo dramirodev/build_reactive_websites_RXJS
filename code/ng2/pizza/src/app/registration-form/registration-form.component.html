@@ -1,0 +1,75 @@
+<!--
+ ! Excerpted from "Build Reactive Websites with RxJS",
+ ! published by The Pragmatic Bookshelf.
+ ! Copyrights apply to this code. It may not be used to create training material,
+ ! courses, books, articles, and the like. Contact us if you are in doubt.
+ ! We make no guarantees that this code is fit for any purpose.
+ ! Visit http://www.pragmaticprogrammer.com/titles/rkrxjs for more book information.
+-->
+<form [formGroup]="registrationForm" class="form">
+  <div class="form-group">
+    <label>Username:
+      <input class="form-control" formControlName="username">
+    </label>
+  </div>
+  <div class="form-group">
+    <label>Phone Number:
+      <input class="form-control" formControlName="phoneNumber">
+    </label>
+  </div>
+  <div class="form-group">
+    <label>Password:
+      <input class="form-control" formControlName="password" type="password">
+    </label>
+  </div>
+  <div class="form-group">
+    <label>Confirm Password:
+      <input class="form-control" formControlName="confirmPassword" type="password">
+    </label>
+  </div>
+  <h3>Addresses</h3>
+  <div formArrayName="addresses" *ngFor="let addr of addresses.controls;
+       let i = index">
+    <form [formGroupName]="i">
+      <div class="form-group">
+        <label>Street:
+          <input class="form-control" formControlName="street">
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Apartment (optional):
+          <input class="form-control" formControlName="apartment">
+        </label>
+      </div>
+      <div class="form-group">
+        <label>City:
+          <input class="form-control" formControlName="city">
+        </label>
+      </div>
+      <div class="form-group">
+        <label>State:
+          <input class="form-control" formControlName="state">
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Zip:
+          <input class="form-control" formControlName="zip">
+        </label>
+      </div>
+      <button
+        type="button"
+        [disabled]="addresses.controls.length === 1"
+        class="btn btn-default"
+        (click)="addresses.removeAt(i)"
+      >Remove</button>
+      <hr>
+    </form>
+  </div>
+  <button type="button" class="btn btn-default" (click)="addAddress()">
+    Add Address</button>
+  <button
+    class="btn btn-default"
+    (click)="save()"
+    [disabled]="registrationForm.invalid"
+  >Save</button>
+</form>

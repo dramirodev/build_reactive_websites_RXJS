@@ -1,0 +1,33 @@
+<!--
+ ! Excerpted from "Build Reactive Websites with RxJS",
+ ! published by The Pragmatic Bookshelf.
+ ! Copyrights apply to this code. It may not be used to create training material,
+ ! courses, books, articles, and the like. Contact us if you are in doubt.
+ ! We make no guarantees that this code is fit for any purpose.
+ ! Visit http://www.pragmaticprogrammer.com/titles/rkrxjs for more book information.
+-->
+<div class="row">
+  <div class="col-xs-2">
+    <label for="phoneNum">Phone Number:</label>
+  </div>
+  <div class="col-xs-10">
+    <input [formControl]="phoneNumber" />
+    <!-- (1) -->
+    <div *ngIf="phoneNumber.invalid">
+      <!-- (2) -->
+      <div *ngIf="(phoneNumber.dirty || phoneNumber.touched)">
+        <!-- (3) -->
+        <div *ngIf="phoneNumber.errors.tooLong">
+          There's too many digits in your phone number!
+          You entered {{ phoneNumber.errors.tooLong.numDigits }} 
+              digits (required: 10)
+        </div>
+        <div *ngIf="phoneNumber.errors.tooShort">
+          Your phone number is too short!
+          You entered {{ phoneNumber.errors.tooShort.numDigits }} 
+              digits (required: 10)
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+image: node:latest
+
+cache:
+  paths:
+  - node_modules/
+
+pages:
+  stage: deploy
+  script:
+  - npm install
+  - npm run build
+  - mkdir public
+  - mv bundle.js public
+  - mv index.html public
+  - mv img public/
+  artifacts:
+    paths:
+    - public
+  only:
+  - master

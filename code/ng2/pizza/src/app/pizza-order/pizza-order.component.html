@@ -1,0 +1,68 @@
+<!--
+ ! Excerpted from "Build Reactive Websites with RxJS",
+ ! published by The Pragmatic Bookshelf.
+ ! Copyrights apply to this code. It may not be used to create training material,
+ ! courses, books, articles, and the like. Contact us if you are in doubt.
+ ! We make no guarantees that this code is fit for any purpose.
+ ! Visit http://www.pragmaticprogrammer.com/titles/rkrxjs for more book information.
+-->
+<h1>Pizza Order Form</h1>
+<form [formGroup]="pizzaForm">
+  <div formArrayName="pizzas">
+    <div *ngFor="let pizza of pizzas.controls; let i = index"
+        [formGroupName]="i">
+      <!-- TODO: specials -->
+      <h3>Make it a Special</h3>
+      <button *ngFor="let s of specials" (click)="selectSpecial(i, s)">
+        {{ s.name }}
+      </button>
+      <h3>Size:</h3>
+      <label>
+        Small
+        <input formControlName="size" type="radio" value="small">
+      </label>
+      <label>
+        Medium
+        <input formControlName="size" type="radio" value="medium">
+      </label>
+      <label>
+        Large
+        <input formControlName="size" type="radio" value="large">
+      </label>
+      <h3>Toppings:</h3>
+
+      <div formGroupName="toppings">
+        <span *ngFor="let t of toppingNames">
+          <label>
+            {{ t }}
+            <input type="checkbox" [formControlName]="t">
+          </label>
+        </span>
+      </div>
+      <button type="button" (click)="pizzas.removeAt(i)">
+        Remove this Pizza</button>
+      <hr>
+    </div>
+  </div>
+  <button type="button" (click)="addPizza()">Add Pizza</button>
+  <div>
+    <h3>Payment</h3>
+    <select formControlName="creditCard">
+      <option *ngFor="let card of userDetails.creditCards" [ngValue]="card">
+        {{ card }}
+      </option>
+    </select>
+  </div>
+  <div>
+    <h3>Address</h3>
+    <select formControlName="address">
+      <option *ngFor="let address of userDetails.addresses" [ngValue]="address">
+        {{ address }}
+      </option>
+    </select>
+  </div>
+  <div>
+    <h3>Price: ${{ price$ | async }}</h3>
+    <button type="button">Submit</button>
+  </div>
+</form>

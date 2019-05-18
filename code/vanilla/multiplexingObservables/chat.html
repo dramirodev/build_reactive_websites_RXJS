@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+ ! Excerpted from "Build Reactive Websites with RxJS",
+ ! published by The Pragmatic Bookshelf.
+ ! Copyrights apply to this code. It may not be used to create training material,
+ ! courses, books, articles, and the like. Contact us if you are in doubt.
+ ! We make no guarantees that this code is fit for any purpose.
+ ! Visit http://www.pragmaticprogrammer.com/titles/rkrxjs for more book information.
+-->
+<html>
+  <head>
+    <title>Multiplexing Observables: Chat</title>
+    <link rel="stylesheet" href="http://localhost:3000/assets/bootstrap.min.css">
+    <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+    .chat-container {
+      height: 500px;
+    }
+    .chat-header {
+      height: 69px;
+    }
+    .chat-history {
+      height: 100%;
+    }
+    .input-box {
+      height: 34px;
+    }
+    .message-container {
+      overflow: scroll;
+      height: 100%;
+    }
+    .message-container .author-name {
+      font-weight: bold;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container chat-container">
+      <div class="row chat-header">
+        <div class="col-xs-12 text-center">
+          <h1>Observable Chat</h1>
+        </div>
+      </div>
+      <div class="row chat-history">
+        <div class="col-xs-3" id="room-list"></div>
+        <div class="col-xs-9 message-container"></div>
+      </div>
+      <div class="row input-box">
+        <div class="col-xs-9 col-xs-offset-3">
+          <div class="input-group">
+            <input id="msg-box" type="text" class="form-control" name="chat-input">
+            <span class="input-group-btn">
+              <button id="send-button" class="btn btn-success">Send</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="login-modal">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="input-group" id="login-form">
+              <input placeholder="Username" id="login-input" class="form-control" type="text">
+              <span class="input-group-btn">
+                <button id="login-button" class="btn btn-success">Login</button>
+              </span>
+            </div>
+            <div id="login-spinner" style="display: none">
+              <img src="/images/spinner.gif" alt="loading spinner"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="http://localhost:3000/assets/jquery.min.js"></script>
+    <script src="http://localhost:3000/assets/bootstrap.min.js"></script>
+    <script src="/multiplexingObservables/chatlib.js"></script>
+    <script src="/multiplexingObservables/reader.js"></script>
+
+  </body>
+</html>

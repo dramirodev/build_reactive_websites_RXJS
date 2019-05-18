@@ -1,0 +1,158 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* TODO: remove unused styles */
+
+/* General Util */
+body, html {
+  margin: 0;
+}
+.hide {
+  display: none !important;
+}
+* {
+  font-size: 16px;
+}
+.center-text {
+  text-align: center;
+}
+
+/* Photo search results */
+.results {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: calc(100% - 3em);
+  overflow: scroll;
+}
+
+.result-container {
+  width: 250px;
+  height: 200px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 2px solid rgb(230, 230, 230);
+  margin: 5px;
+}
+
+.results-img {
+  display: block;
+  margin: 0 auto;
+  max-width: 250px;
+  max-height: 150px;
+}
+
+.results-btn {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Search bar */
+header {
+  background-color: #22d18d;
+  height: 3em;
+}
+.search-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.search-container .search {
+  margin: auto;
+  width: 30%;
+  height: 2em;
+  border-radius: 5px;
+}
+
+/* Spinner details */
+.global-loader {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+@keyframes spin-loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  animation: spin-loader 1s infinite linear;
+  display: block;
+  margin: auto;
+  width: 200px;
+}
+
+/* Big ol' lightbox */
+.lightbox {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.lightbox .chevron {
+  width: 20%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.25);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.lightbox .chevron .inner-chevron {
+  width: 100%;
+  font-size: 36px;
+  height: 36px;
+}
+.lightbox .chevron.active {
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+}
+.lightbox .chevron.active .inner-chevron:hover {
+  color: white;
+}
+.lightbox .close-btn {
+  font-family: sans-serif;
+  text-align: right;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+.lightbox .img-lg {
+  width: 60%;
+}
+
+/* Misc */
+.errors {
+  width: calc(100% - 10px);
+  text-align: center;
+  background-color: #F48D8D;
+  border-radius: 5px;
+  padding: 5px;
+  display: none;
+}
+.empty-state {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Edit Photo */
+.photo-detail {
+  width: 100%;
+}
